@@ -33,36 +33,37 @@ proc InverseFourierTransform(transformed: array[0..N-1, Complex]; reconstructed:
       sum += transformed[k] * term
     reconstructed[n] = sum.real / N
 
-var waveform: array[0..N-1, float]
+when(isMainModule):
+  var waveform: array[0..N-1, float]
 
-# Generate a waveform example with 64 floats
-for i in 0 .. N-1:
-  waveform[i] = 3
+  # Generate a waveform example with 64 floats
+  for i in 0 .. N-1:
+    waveform[i] = 3
 
-var transformed: array[0..N-1, Complex]
-FourierTransform(waveform, transformed)
+  var transformed: array[0..N-1, Complex]
+  FourierTransform(waveform, transformed)
 
-# Keep the first 32 frequencies and set the rest to zero
-for i in 32 .. N-1:
-  transformed[i] = Complex(0.0, 0.0)
+  # Keep the first 32 frequencies and set the rest to zero
+  for i in 32 .. N-1:
+    transformed[i] = Complex(0.0, 0.0)
 
-var reconstructed: array[0..N-1, float]
-InverseFourierTransform(transformed, reconstructed)
+  var reconstructed: array[0..N-1, float]
+  InverseFourierTransform(transformed, reconstructed)
 
-var echoed: array[0..(N*2)-1, float]
-for i in 0 .. N-1:
-  echoed[i] = reconstructed[i]
-  echoed[i + N] = reconstructed[i]
+  var echoed: array[0..(N*2)-1, float]
+  for i in 0 .. N-1:
+    echoed[i] = reconstructed[i]
+    echoed[i + N] = reconstructed[i]
 
-# Print the original waveform, the echoed waveform, and their Fourier transforms
-echo "Original Waveform:"
-printWaveform(waveform)
+  # Print the original waveform, the echoed waveform, and their Fourier transforms
+  echo "Original Waveform:"
+  printWaveform(waveform)
 
-echo "Fourier Transform (Magnitude):"
-printMagnitudeSpectrum(transformed)
+  echo "Fourier Transform (Magnitude):"
+  printMagnitudeSpectrum(transformed)
 
-echo "Reconstructed Waveform:"
-printWaveform(reconstructed)
+  echo "Reconstructed Waveform:"
+  printWaveform(reconstructed)
 
-echo "Echoed Waveform:"
-printWaveform(echoed)
+  echo "Echoed Waveform:"
+  printWaveform(echoed)
