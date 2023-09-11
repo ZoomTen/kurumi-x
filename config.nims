@@ -1,4 +1,4 @@
-if defined(emscripten):
+when defined(emscripten):
   # This path will only run if -d:emscripten is passed to nim.
 
   --nimcache:tmp # Store intermediate files close by in the ./tmp dir.
@@ -30,11 +30,11 @@ if defined(emscripten):
 #   switch("passC", "-traditional")
   switch("passL", "-o step1.html --shell-file shell_minimal.html")
 else:
-    --d:debug
-    --backend:cpp
-    --verbosity:1
-    --threads:off
-    --d:nimDontSetUtf8CodePage
-    --opt:speed
-    --passC:"-flto"
-    --passL:"-flto -s"
+  --d:debug
+  --backend:cpp
+  --verbosity:1
+  --threads:off
+  --d:nimDontSetUtf8CodePage
+  --opt:speed
+  # --passC:"-flto"
+  # --passL:"-flto -s"
