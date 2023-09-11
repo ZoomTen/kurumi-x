@@ -1,4 +1,4 @@
-import modules/[
+import ./modules/[
     module,
     oscillatorModule, 
     fmModule, 

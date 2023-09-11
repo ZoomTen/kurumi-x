@@ -1,9 +1,9 @@
 import imgui, imgui/[impl_opengl, impl_glfw]#, nimgl/imnodes
 import nimgl/[opengl, glfw]
-import outputWindow
-import grid
-import moduleCreateMenu
-import moduleDraw
+import ./outputWindow
+import ./grid
+import ./moduleCreateMenu
+import ./moduleDraw
 import ../synthesizer/exportFile
 import ../synthesizer/globals
 import std/os

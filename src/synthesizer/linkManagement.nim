@@ -1,6 +1,6 @@
-import globals
-import utils/utils
-import synth
+import ./globals
+import ./utils/utils
+import ./synth
 import ../synthesizer/modules/[fmModule, module, mixerModule, oscillatorModule]
 
 proc breakLinksInput*(module: SynthModule, pin: int): void =

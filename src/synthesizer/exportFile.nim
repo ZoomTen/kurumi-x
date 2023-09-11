@@ -1,11 +1,11 @@
 import globals
-import synthesizeWave
+import ./synthesizeWave
 import flatty
-import synth
-import utils/utils
+import ./synth
+import ./utils/utils
 import supersnappy
-import modules
-import serializationObject
+import ./modules
+import ./serializationObject
 
 import imgui, imgui/[impl_opengl, impl_glfw]#, nimgl/imnodes
 import nimgl/[opengl, glfw]

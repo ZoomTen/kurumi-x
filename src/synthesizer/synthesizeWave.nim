@@ -1,9 +1,9 @@
-import globals
-import modules/outputModule
+import ./globals
+import ./modules/outputModule
 import math
 import strutils
 # import kissfft/kissfft
-import fourierTransform
+import ./fourierTransform
 
 proc synthesize*(): void =
 

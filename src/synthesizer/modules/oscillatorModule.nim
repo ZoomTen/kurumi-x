@@ -1,4 +1,4 @@
-import module
+import ./module
 import ../utils/utils
 import ../globals
 import math

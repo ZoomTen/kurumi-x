@@ -1,4 +1,4 @@
-import synth
+import ./synth
 # import modules/outputModule
 import ./utils/utils
 import math

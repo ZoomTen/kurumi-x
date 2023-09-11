@@ -1,4 +1,4 @@
-import fft
+import ./fft
 import math, complex
 
 proc fourierTransform*(data: ptr array[4096 * 8, float64], length: int): void =

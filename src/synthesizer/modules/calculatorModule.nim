@@ -1,4 +1,4 @@
-import module
+import ./module
 import ../globals
 import ../utils/utils
 import mathexpr

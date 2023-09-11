@@ -1,6 +1,6 @@
 import math
-import modules/module
-import utils/utils
+import ./modules/module
+import ./utils/utils
 
 # We want at most 256 modules.
 const GRID_SIZE_X* = 16

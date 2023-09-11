@@ -1,7 +1,7 @@
-import globals
+import ./globals
 import flatty
-import synth
-import utils/utils
+import ./synth
+import ./utils/utils
 import supersnappy
 # import modules/[
 #     oscillatorModule, 

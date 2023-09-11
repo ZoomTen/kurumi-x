@@ -1,4 +1,4 @@
-import application/app
+import ./application/app
 
 proc main() =
     when defined(emscripten):

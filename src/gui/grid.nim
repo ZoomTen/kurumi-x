@@ -1,7 +1,7 @@
 import imgui, imgui/[impl_opengl, impl_glfw]#, nimgl/imnodes
 import nimgl/[opengl, glfw]
-import moduleCreateMenu
-import moduleDraw
+import ./moduleCreateMenu
+import ./moduleDraw
 import ../synthesizer/synth
 import ../synthesizer/globals
 import ../synthesizer/utils/utils

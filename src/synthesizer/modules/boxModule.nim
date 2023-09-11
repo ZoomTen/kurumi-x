@@ -1,7 +1,7 @@
-import module
+import ./module
 import ../globals
 import ../utils/utils
-import outputModule
+import ./outputModule
 
 const GRID_SIZE_X = 16
 const GRID_SIZE_Y = 16
