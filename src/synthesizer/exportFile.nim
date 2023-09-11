@@ -48,6 +48,8 @@ proc drawPopup(currFrame, maxFrame: int): void {.inline.} =
 
 proc saveWav*(bits: int = 16, sequence: bool = false): void =
     let path = saveFileDialog("Export .WAV", getCurrentDir() / "\0", ["*.wav"], ".WAV files")
+    if path == "":
+        return
 
     # var seqFrame = 0
      
@@ -157,6 +159,8 @@ proc saveN163*(sequence: bool): void =
     synthesize()
 
     let path = saveFileDialog("Export .FTI", getCurrentDir() / "\0", ["*.fti"], ".FTI files")
+    if path == "":
+        return
     
     var name = path.splitFile().name
 
@@ -266,6 +270,8 @@ proc saveN163*(sequence: bool): void =
 const FURNACE_FORMAT_VER: uint16 = 143
 proc saveFUW*(): void =
     let path = saveFileDialog("Export .FUW", getCurrentDir() / "\0", ["*.fuw"], ".FUW files")
+    if path == "":
+        return
      
     let f = open(path, fmWrite)
     defer: f.close()
