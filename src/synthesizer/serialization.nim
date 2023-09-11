@@ -42,8 +42,9 @@ import supersnappy
 import modules
 import serializationObject
 import synthesizeWave
+import chronicles
 
-
+const defaultSavestateName = "backup.bak"
 
 type
     SynthSerializeObject = object
@@ -70,7 +71,8 @@ proc saveState*() =
         obj.moduleList[n] = m.serialize()
 
     let str = "VAMPIRE " & compress(toFlatty(obj))
-    writeFile("backup.bak", str)
+    info "Saving Kurumi-X state", fileName=defaultSavestateName
+    writeFile(defaultSavestateName, str)
 
 proc unserializeModule(mData: ModuleSerializationObject): SynthModule =
     var module: SynthModule
@@ -188,8 +190,11 @@ proc unserializeFromClipboard*(): SynthModule =
 
 proc loadState*() =
     try:
-        let str = readFile("backup.bak")
-        if(str.substr(0, "VAMPIRE ".len - 1) != "VAMPIRE "): return
+        info "Opening existing Kurumi-X state", fileName=defaultSavestateName
+        let str = readFile(defaultSavestateName)
+        if(str.substr(0, "VAMPIRE ".len - 1) != "VAMPIRE "):
+            error "Invalid state file!"
+            return
         let data = str.substr("VAMPIRE ".len).uncompress().fromFlatty(SynthSerializeObject)
         # let data = str.fromFlatty(SynthSerializeObject)
         synthContext.waveDims = data.waveDims
@@ -201,5 +206,5 @@ proc loadState*() =
         synthesize()
 
     except IOError:
-        echo "error"
+        error "IOError, couldn't load from state"
         return

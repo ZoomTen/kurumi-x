@@ -4,15 +4,18 @@ import math
 import strutils
 # import kissfft/kissfft
 import ./fourierTransform
+import chronicles
 
 proc synthesize*(): void =
+    logScope:
+        topics = "synthesize"
 
     for m in synthContext.moduleList:
         if(m == nil): continue
         m.update = true
 
     let outModule = synthContext.moduleList[synthContext.outputIndex].OutputModule
-    echo outModule.inputs[0].pinIndex
+    debug "Output", wave=outModule.inputs[0].pinIndex
 
     let overSampleValue = 1.0/synthContext.oversample.float64
 
