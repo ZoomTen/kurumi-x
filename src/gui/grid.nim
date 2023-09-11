@@ -5,6 +5,7 @@ import ./moduleDraw
 import ../synthesizer/synth
 import ../synthesizer/globals
 import ../synthesizer/utils/utils
+import chronicles
 
 const
     WIN_PAD = 8.0f
@@ -23,7 +24,8 @@ proc `+`(vec1, vec2: ImVec2): ImVec2 =
 var scrollPoint = ImVec2()
 
 proc drawGrid*(): void {.inline.} =
-
+    logScope:
+        topics = "drawGrid"
     if(igBeginTable("table", GRID_SIZE_X.int32, (ImGuiTableFlags.SizingFixedSame.int or ImGuiTableFlags.ScrollX.int or ImGuiTableFlags.ScrollY.int).ImGuiTableFlags)):
         for i in 0..<GRID_SIZE_Y:
             igTableNextRow()
@@ -51,7 +53,7 @@ proc drawGrid*(): void {.inline.} =
             let index = i * GRID_SIZE_X + j
             let module = synthContext.moduleList[index]
             if(module == nil): continue
-            # echo("x : " & $j & " y: " & $i)
+            #debug "Grid render", x=j, y=i
             for x in 0..<module.outputs.len():
                 let link = module.outputs[x]
                 if(link.moduleIndex < 0 or link.pinIndex < 0): continue

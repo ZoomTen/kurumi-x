@@ -7,6 +7,7 @@ import ./moduleDraw
 import ../synthesizer/exportFile
 import ../synthesizer/globals
 import std/os
+import chronicles
 
 let demo = true
 
@@ -24,10 +25,11 @@ proc drawApp*(): void {.inline.} =
     if(igBeginMainMenuBar()):
         if(igBeginMenu("File")):
             if(igMenuItem("Save patch")):
-                echo "Saving Patch"
+                info "Saving Kurumi-X patch"
+                debug "TODO: serialize to file"
             if(igMenuItem("Load patch")):
-                echo "Loading Patch"
-            
+                info "Loading Kurumi-X patch"
+                debug "TODO: unserialize from file"
             if(igBeginMenu("Export")):
                 if(igBeginMenu(".WAV")):
                     if(igMenuItem("8-Bits .WAV")):

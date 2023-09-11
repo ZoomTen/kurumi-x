@@ -42,6 +42,7 @@ import ../synthesizer/synthesizeWave
 import ../synthesizer/modules
 import ../synthesizer/globals
 import ../synthesizer/serialization
+import chronicles
 
 const modEntries = [
     "Output".cstring,
@@ -56,13 +57,15 @@ type
         PHASE_MODULATION
 
 proc executeContextClick(index: int, actionId: int): void =
+    logScope:
+        topics = "executeContextClick"
     case actionId.ActionType
     of OUTPUT:
-        echo "OUTPUT " & $index
+        info "Output", index=index
     of OSCILLATOR:
-        echo "OSCILLATOR " & $index
+        info "Oscillator", index=index
     of PHASE_MODULATION:
-        echo "FM " & $index
+        info "FM", index=index
         
     
     return

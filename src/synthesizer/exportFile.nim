@@ -18,6 +18,8 @@ import os
 import math
 import browsers
 
+import chronicles
+
 proc getSampleRate(): int =
     return int(floor((440 * float64(synthContext.waveDims.x)) / 2.0))
 
@@ -32,7 +34,7 @@ proc drawPopup(currFrame, maxFrame: int): void {.inline.} =
     
     if(igBeginPopupModal("Exporting sequence", nil, flags = ImGuiWindowFlags.NoResize)):
         igText(("Exporting Wave " & $currFrame & " over " & $maxFrame & "...").cstring)
-        echo "Window drawn"
+        info "Export sequence popup drawn"
         igEndPopup()
     igRender()
 

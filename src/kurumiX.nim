@@ -1,11 +1,6 @@
 import ./application/app
-
-proc main() =
-    when defined(emscripten):
-        boot()
-    else:
-        # echo("Hello World!")
-        boot()
+import chronicles
 
 when isMainModule:
-    main()
+    info "Kurumi-X is starting"
+    boot()

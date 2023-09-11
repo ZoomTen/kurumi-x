@@ -18,3 +18,7 @@ requires "supersnappy == 2.1.3"
 requires "tinydialogs == 1.0.0"
 requires "kissfft == 0.0.1"
 requires "mathexpr == 1.3.2"
+
+# Log dependencies
+
+requires "chronicles#1922045"

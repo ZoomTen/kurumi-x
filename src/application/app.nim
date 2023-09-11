@@ -6,6 +6,7 @@ import ../synthesizer/modules/outputModule
 import ../synthesizer/synthesizeWave
 import ../synthesizer/serialization
 import std/random
+import chronicles
 
 const vampires = [
     "Flandre Scarlet",
@@ -42,7 +43,7 @@ proc boot*(): void =
     doAssert igGlfwInitForOpenGL(window, true)
     doAssert igOpenGL3Init()
 
-    echo "hi"
+    info "Window initialized"
     loadState()
 
     while not window.windowShouldClose:
